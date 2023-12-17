@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamLastEvidence.Views.ProductListContenPage"
+             Title="Product List "  Shell.TitleColor="White" Shell.BackgroundColor="Blue">
+    <ScrollView>
+        <VerticalStackLayout>
+            <SearchBar Placeholder="Search items..." />
+            <CollectionView ItemsSource="{Binding .}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="8" CornerRadius="8" BorderColor="LightSlateGray">
+                            <HorizontalStackLayout Padding="10" Margin="10" VerticalOptions="Center">
+
+
+                                <Image
+                                        Source="{Binding RemotePictureUrl}"
+                                        SemanticProperties.Description=""
+                                        WidthRequest="100"
+                                        HeightRequest="100"
+                                        HorizontalOptions="Center" />
+
+
+                                <VerticalStackLayout VerticalOptions="Center" Margin="20,5,5,5">
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding Price}" />
+                                    <Button x:Name="AddToCart" Clicked="AddToCart_Clicked" CommandParameter="{Binding Id}" BorderColor="Blue" BorderWidth="1" Margin="0, 10, 0, 0" BackgroundColor="White" TextColor="Blue" ImageSource="cart48b.png" Text="Add to Cart" HorizontalOptions="End">
+                                        
+                                    </Button>
+                                    
+                                </VerticalStackLayout>
+
+
+                            </HorizontalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="ProductTapItem" Tapped="ProductTapItem_Tapped" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
